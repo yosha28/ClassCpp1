@@ -16,7 +16,7 @@ char *parseItem(char *fromChar, const char delimiter, char *parsedItem) {
 	char *result = NULL;
 	if (NULL != fromChar) {
 		
-		result = strchr(fromChar, &delimiter);
+		result = strstr(fromChar, &delimiter);
 		int res = 0;
 		if (NULL != result) {
 			for (int i = 0; i < (result - fromChar); i++) {
