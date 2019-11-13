@@ -28,8 +28,11 @@ public:
 	GameEngine();
 	~GameEngine();
 	void Run();
+	void RunEditor();
 	int  getRunning();
 	void setRunning(const int value);
+	funcOnKeyDown onRunBefore;
+	funcOnKeyDown onProcessKeyBefore;
 	funcOnKeyDown onKeyLeft;
 	funcOnKeyDown onKeyRight;
 	funcOnKeyDown onKeyDown;
@@ -38,6 +41,8 @@ public:
 	funcOnKeyDown onKeyF2;
 	funcOnKeyDown onKeyF3;
 	funcOnKeyDown onKeyF4;
+	funcOnKeyDown onKeyF5;
+	funcOnKeyDown onKeyF6;
 	funcOnKeyDown onKeyDelete;
 	funcOnEscape onKeyEscape;
 

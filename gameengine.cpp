@@ -20,8 +20,12 @@ GameEngine::GameEngine() {
 	 onKeyF2 = NULL;
 	 onKeyF3 = NULL;
 	 onKeyF4 = NULL;
+	 onKeyF5 = NULL;
+	 onKeyF6 = NULL;
 	 onKeyEscape=NULL;
 	 onKeyDelete = NULL;
+	 onRunBefore = NULL;
+	 onProcessKeyBefore = NULL;
 
 	Running = 0;
 	
@@ -58,6 +62,7 @@ void GameEngine::Run() {
 
 void GameEngine::doRunBefore() {
 	list2_print(Map);
+
 };
 
 void GameEngine::doRunAfter() {
@@ -66,14 +71,9 @@ void GameEngine::doRunAfter() {
 };
 
 void GameEngine::doProcessKeyBefore() {
-	Tank->Print();
-	consoleGotoXY(Tank->getX(), Tank->getY() );
-
-	if (NULL != boom) {
-		delete boom;
-		boom = NULL;
+	if (NULL != onProcessKeyBefore) {
+		onProcessKeyBefore(this);
 	}
-
 };
 
 void GameEngine::doProcessKeyAfter() {
@@ -250,11 +250,17 @@ void GameEngine::doKeyF4() {
 };
 
 void GameEngine::doKeyF5() {
-
+	if (NULL != onKeyF5)
+	{
+		onKeyF5(this);
+	}
 };
 
 void GameEngine::doKeyF6() {
-
+	if (NULL != onKeyF6)
+	{
+		onKeyF6(this);
+	}
 };
 
 void GameEngine::doKeyF7() {
